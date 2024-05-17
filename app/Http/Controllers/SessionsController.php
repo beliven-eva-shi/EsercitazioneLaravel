@@ -26,7 +26,7 @@ class SessionsController extends Controller
         ]);
         if (auth()->attempt($attributes)) {
             session()->regenerate();
-            return redirect('/dashboard')->with('success', 'Wecome back!');
+            return redirect('/project')->with('success', 'Wecome back!');
         }
         return back()->withInput()->withErrors(['email' => 'Your provided credentials could not be verified.']);
     }

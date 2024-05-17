@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\TasksController;
-use App\Models\Tasks;
+use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,3 +28,7 @@ Route::post('session', [SessionsController::class, 'store'])->middleware('guest'
 //     Route::get('dashboard', [TasksController::class, 'index']);
 // });
 Route::get('dashboard', [TasksController::class, 'index']);
+Route::get('project', [ProjectsController::class, 'index']);
+Route::get('project/{project:id}', function (Project $project) {
+    return view('tasks.index', ['tasks' => $project->tasks]);
+});
