@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Clients;
+use App\Models\Client;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Projects>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
  */
 class ProjectsFactory extends Factory
 {
@@ -22,7 +22,7 @@ class ProjectsFactory extends Factory
 
             'title' => fake()->sentence(),
             'description' => fake()->text(),
-            'client_id' => Clients::factory()
+            'client_id' => Client::factory()
         ];
     }
 }

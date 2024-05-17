@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Projects;
-use App\Models\Tasks;
+use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
-use Illuminate\Console\View\Components\Task;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -18,15 +17,16 @@ class TasksController extends Controller
         //         ->where('title', 'like', '%' . request('search') . '%')
         //         ->orWhere('body', 'like', '%' . request('search') . '%');
         // }
+
         return view(
             'tasks.index',
             [
-                'tasks' => Tasks::latest()->paginate(6)
+                'tasks' => Task::latest()->filter(request(['project']))->paginate(6)
             ]
         );
     }
 
-    public function show(Tasks $task)
+    public function show(Task $task)
     {
         return view(
             'tasks.show',
@@ -43,7 +43,7 @@ class TasksController extends Controller
             'tasks.create',
             [
                 'users' => User::all(),
-                'projects' => Projects::all()
+                'projects' => Project::all()
             ]
 
         );
@@ -63,7 +63,7 @@ class TasksController extends Controller
         );
         $priorita = $request->get('priorita');
 
-        $task = Tasks::create([
+        $task = Task::create([
             'title' => $attributes['titolo'],
             'description' => $attributes['descrizione'],
             // 'priority' => $attributes['priorita'],

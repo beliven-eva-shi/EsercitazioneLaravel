@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Clients;
-use App\Models\Projects;
+use App\Models\Client;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tasks>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
  */
 class TasksFactory extends Factory
 {
@@ -24,7 +24,7 @@ class TasksFactory extends Factory
             'description' => fake()->text(),
             'priority' => fake()->randomElement(['bassa', 'media', 'alta']),
             'user_id' => User::factory(),
-            'project_id' => Projects::factory(),
+            'project_id' => Project::factory(),
             'stato' => fake()->randomElement(['Backlog', 'To do', 'In progress', 'Done'])
 
 
