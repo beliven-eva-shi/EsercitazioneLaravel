@@ -23,9 +23,7 @@ class Task extends Model
 
         // });
         $query->when($filters['project'] ?? false, function ($query, $project) {
-            $query
-                ->whereHas('project', fn ($query)
-                => $query->where('id', $project));
+            $query->where('project_id', $project);
         });
         // $query->when($filters['author'] ?? false, function ($query, $author) {
         //     $query
