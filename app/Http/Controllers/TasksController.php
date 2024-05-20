@@ -28,8 +28,6 @@ class TasksController extends Controller
             [
                 'task' => $task,
                 'clients' => Client::all()
-                //'categories' => Category::all()
-                //'post' => Post::findOrFail($id)
             ]
         );
     }
@@ -61,7 +59,6 @@ class TasksController extends Controller
                 //
             ]
         );
-        $priorita = $request->get('priorita');
 
         $task = Task::create([
             'title' => $attributes['titolo'],
