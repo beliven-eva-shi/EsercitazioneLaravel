@@ -35,3 +35,5 @@ Route::post('session', [SessionsController::class, 'store'])->middleware('guest'
 // });
 Route::get('task', [TasksController::class, 'index']);
 Route::get('project', [ProjectsController::class, 'index']);
+Route::put('/task/{task:id}/stato', [TasksController::class, 'editStato']);
+Route::put('/task/{task:id}/user', [TasksController::class, 'editUser']);

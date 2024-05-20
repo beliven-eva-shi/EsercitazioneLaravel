@@ -27,7 +27,8 @@ class TasksController extends Controller
             'tasks.show',
             [
                 'task' => $task,
-                'clients' => Client::all()
+                'clients' => Client::all(),
+                'users' => User::all()
             ]
         );
     }
@@ -52,21 +53,12 @@ class TasksController extends Controller
             [
                 'titolo' => 'required|max:30',
                 'descrizione' => 'required|max:255',
-                //     'priorita' => 'required',
-                //     'assegnato_a' => 'required',
-                //     'stato' => 'required',
-                //     'progetto' => 'required'
-                //
             ]
         );
 
         $task = Task::create([
             'title' => $attributes['titolo'],
             'description' => $attributes['descrizione'],
-            // 'priority' => $attributes['priorita'],
-            //'user_id' => $attributes['assegnato_a'],
-            // 'stato' => $attributes['stato'],
-            // 'project_id' => $attributes['progetto'],
             'priority' => $request->get('priorita'),
             'user_id' => $request->get('assegnato_a'),
             'stato' => $request->get('stato'),
@@ -75,22 +67,26 @@ class TasksController extends Controller
         ]);
         $task->save();
 
-        // $attributes = request()->validate([
-        //     'titolo' => 'required|max:30',
-        //     'descrizione' => 'required|max:255',
-        //     'priorita' => 'required',
-        //     'assegnato_a' => 'required',
-        //     'stato' => 'required',
-        //     'progetto' => 'required'
-
-        // ]);
-        // ddd($attributes);
-        // Tasks::create($attributes);
-
-
-
-
-        // session()->flash('success', 'Your account has been created!');
         return redirect('/task')->with('success', 'Il tuo task è stato aggiunto!');
+    }
+
+    public function editStato(Request $request, $id)
+    {
+
+        $task = Task::findOrFail($id);
+        $task->stato = $request->input('stato');
+        $task->save();
+
+        return redirect("/task")->with('success', 'Task status updated!');
+    }
+
+    public function editUser(Request $request, $id)
+    {
+
+        $task = Task::findOrFail($id);
+        $task->user_id = $request->input('assegnato_a');
+        $task->save();
+
+        return redirect("/task")->with('success', 'Task status updated!');
     }
 }
