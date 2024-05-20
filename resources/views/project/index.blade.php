@@ -6,6 +6,7 @@
             <x-client-dropdown />
         </div>
 
+
         @if ($project->count())
             <x-project-grid :projects="$project" />
             {{ $project->links() }}
