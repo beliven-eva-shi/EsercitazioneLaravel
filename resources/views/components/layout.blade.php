@@ -1,4 +1,6 @@
 <!doctype html>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 <title>Projects</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -15,7 +17,7 @@
             <div class="mt-8 md:mt-0">
 
                 @auth
-                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
+                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->nome }}!</span>
                     <form method="POST" action="/logout">
                         @csrf
                         <button type="submit">Log Out</button>
