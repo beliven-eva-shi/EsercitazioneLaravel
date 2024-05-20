@@ -13,24 +13,12 @@ class Task extends Model
     protected $guarded = [];
     protected $with = ["project"];
 
-    public function scopeFilter($query, array $filters) //Post::newQuery()->filter()
+    public function scopeFilter($query, array $filters)
     {
-        // $query->when($filters['search'] ?? false, function ($query, $search) {
-        //     $query->where(fn($query) =>
-        //         $query
-        //             ->where('title', 'like', '%' . request('search') . '%')
-        //             ->orWhere('body', 'like', '%' . request('search') . '%'));
 
-        // });
         $query->when($filters['project'] ?? false, function ($query, $project) {
             $query->where('project_id', $project);
         });
-        // $query->when($filters['author'] ?? false, function ($query, $author) {
-        //     $query
-        //         ->whereHas('author', fn($query)
-        //             => $query->where('username', $author));
-
-        // });
     }
 
     public function project()

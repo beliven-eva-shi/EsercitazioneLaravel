@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
@@ -31,7 +32,8 @@ class TasksController extends Controller
         return view(
             'tasks.show',
             [
-                'task' => $task
+                'task' => $task,
+                'clients' => Client::all()
                 //'categories' => Category::all()
                 //'post' => Post::findOrFail($id)
             ]
@@ -39,11 +41,12 @@ class TasksController extends Controller
     }
     public function create()
     {
+
         return view(
             'tasks.create',
             [
                 'users' => User::all(),
-                'projects' => Project::all()
+                //  'projects' => Project::all()
             ]
 
         );

@@ -17,7 +17,7 @@
                     <div class="mt-4">
                         <h1 class="text-3xl">
 
-                            <a href="/project/{{ $project->id }}">
+                            <a href="/task/?project={{ $project->id }}">
                                 {{ $project->title }}
                             </a>
 
