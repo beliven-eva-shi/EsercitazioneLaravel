@@ -14,7 +14,7 @@
     <div x-show="open" class='py-2 absolute bg-gray-100 w-full mt-2 rounded-xl' style="display:none">
         @foreach ($clients as $client)
             {{-- <a href="/categories/{{$category->slug}}" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">{{$category->name}}</a> --}}
-            <a href="project/?client={{ $client->id }}"
+            <a href="/project/?client={{ $client->id }}"
                 class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">{{ $client->name }}</a>
         @endforeach
 

@@ -15,11 +15,13 @@ Route::get('/', function () {
 //     return view('dashboard', ['tasks' => Tasks::latest()->get()]);
 // });
 
-//Route::get('dashboard', [TasksController::class, 'index']);
-Route::get('tasks/{task:id}', [TasksController::class, 'show']);
 
 Route::get('task/create', [TasksController::class, 'create']);
 Route::post('task/add', [TasksController::class, 'store']);
+Route::get('task/{task:id}', [TasksController::class, 'show']);
+
+
+
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('session', [SessionsController::class, 'store'])->middleware('guest');
@@ -27,8 +29,5 @@ Route::post('session', [SessionsController::class, 'store'])->middleware('guest'
 
 //     Route::get('dashboard', [TasksController::class, 'index']);
 // });
-Route::get('dashboard', [TasksController::class, 'index']);
+Route::get('task', [TasksController::class, 'index']);
 Route::get('project', [ProjectsController::class, 'index']);
-Route::get('project/{project:id}', function (Project $project) {
-    return view('tasks.index', ['tasks' => $project->tasks]);
-});

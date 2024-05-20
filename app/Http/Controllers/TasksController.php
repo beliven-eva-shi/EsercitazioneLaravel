@@ -42,15 +42,18 @@ class TasksController extends Controller
     public function create()
     {
 
+
         return view(
             'tasks.create',
             [
                 'users' => User::all(),
-                //  'projects' => Project::all()
+                'projects' => Project::all()
+
             ]
 
         );
     }
+
     public function store(Request $request)
     {
         $attributes = $request->validate(
@@ -93,11 +96,10 @@ class TasksController extends Controller
         // ddd($attributes);
         // Tasks::create($attributes);
 
-        // //log in
-        // auth()->login($user);
+
 
 
         // session()->flash('success', 'Your account has been created!');
-        return redirect('/dashboard')->with('success', 'Il tuo task è stato aggiunto!');
+        return redirect('/task')->with('success', 'Il tuo task è stato aggiunto!');
     }
 }

@@ -11,7 +11,7 @@
 
         @if ($tasks->count())
             <x-task-grid :tasks="$tasks" />
-            {{-- {{ $tasks->links() }} --}}
+            {{ $tasks->links() }}
 
             {{-- {{$tasks->links()}} --}}
         @else

@@ -21,8 +21,7 @@ class ProjectsController extends Controller
         return view(
             'project.index',
             [
-                'project' => Project::latest()->filter(request(['client']))->paginate(6),
-                'clients' => Client::all()
+                'project' => Project::latest()->filter(request(['client']))->paginate(6)
             ]
         );
     }

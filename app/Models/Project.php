@@ -9,6 +9,8 @@ class Project extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $with = ["client"];
+
 
     public function scopeFilter($query, array $filters)
     {
@@ -19,11 +21,11 @@ class Project extends Model
     }
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
     public function tasks()
     {
-        return $this->hasMany(Task::class, 'project_id');
+        return $this->hasMany(Task::class);
     }
 }
