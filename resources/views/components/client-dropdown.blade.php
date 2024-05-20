@@ -12,6 +12,7 @@
         </svg>
     </button>
     <div x-show="open" class='py-2 absolute bg-gray-100 w-full mt-2 rounded-xl' style="display:none">
+        <a href="/project" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">All</a>
         @foreach ($clients as $client)
             {{-- <a href="/categories/{{$category->slug}}" class="block text-left px-3 text-sm leading-6 hover:bg-gray-300 focus:bg-gray-300">{{$category->name}}</a> --}}
             <a href="/project/?client={{ $client->id }}"
