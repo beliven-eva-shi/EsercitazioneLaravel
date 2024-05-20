@@ -19,6 +19,9 @@ class Task extends Model
         $query->when($filters['project'] ?? false, function ($query, $project) {
             $query->where('project_id', $project);
         });
+        $query->when($filters['user'] ?? false, function ($query, $user) {
+            $query->where('user_id', $user);
+        });
     }
 
     public function project()

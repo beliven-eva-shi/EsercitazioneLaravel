@@ -5,6 +5,9 @@
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
             <x-client-dropdown />
         </div>
+        <a href="/task/?user={{ auth()->user()->id }}"
+            class="px-7 py-3 border border-red-300 rounded-full text-red-300 text-m uppercase font-bold ml-5"
+            style="font-size: 10px">Show Tasks assigned to me</a>
         @if (Auth::user()->can('pm'))
             <a href="/client/create"
                 class="px-7 py-3 border border-red-300 rounded-full text-red-300 text-m uppercase font-bold ml-5"
