@@ -10,8 +10,6 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-
-
         return view(
             'project.index',
             [
@@ -19,19 +17,33 @@ class ProjectsController extends Controller
             ]
         );
     }
-    // public function index()
-    // {
-    //     $projectsQuery = Project::latest()->filter(request(['client']));
 
+    public function create()
+    {
+        return view(
+            'project.create',
+            [
+                'clients' => Client::all()
+            ]
+        );
+    }
 
-    //     dd($projectsQuery->toSql(), $projectsQuery->getBindings());
+    public function store(Request $request)
+    {
+        $attributes = $request->validate(
+            [
+                'titolo' => 'required|max:30',
+                'descrizione' => 'max:255'
+            ]
+        );
 
-    //     return view(
-    //         'project.index',
-    //         [
-    //             'project' => $projectsQuery->paginate(6)
-    //         ]
-    //     );
-    // }
+        $project = Project::create([
+            'title' => $attributes['titolo'],
+            'description' => $attributes['descrizione'],
+            'client_id' => $request->get('cliente')
 
+        ]);
+        $project->save();
+        return redirect('/project')->with('success', 'Il cliente è stato aggiunto!');
+    }
 }
