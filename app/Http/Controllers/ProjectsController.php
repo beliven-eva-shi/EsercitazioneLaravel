@@ -13,7 +13,7 @@ class ProjectsController extends Controller
         return view(
             'project.index',
             [
-                'project' => Project::latest()->filter(request(['client']))->paginate(6)
+                'project' => Project::latest()->filter(request(['client']))->paginate(10)
             ]
         );
     }

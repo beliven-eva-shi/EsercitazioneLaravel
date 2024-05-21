@@ -15,7 +15,7 @@ class TasksController extends Controller
         return view(
             'tasks.index',
             [
-                'tasks' => Task::latest()->filter(request(['project', 'user']))->paginate(6)
+                'tasks' => Task::latest()->filter(request(['project', 'user']))->paginate(10)
             ]
         );
     }
