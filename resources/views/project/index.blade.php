@@ -10,14 +10,14 @@
                 class="px-7 py-3 border border-red-300 rounded-full text-red-300 text-m uppercase font-bold ml-5"
                 style="font-size: 10px">Show Tasks assigned to me</a>
 
-            @if (Auth::user()->can('pm'))
+            @can('pm')
                 <a href="/client/create"
                     class="px-7 py-3 border border-red-300 rounded-full text-red-300 text-m uppercase font-bold ml-5"
                     style="font-size: 10px">Add Client</a>
                 <a href="/project/create"
                     class="px-7 py-3 border border-red-300 rounded-full text-red-300 text-m uppercase font-bold ml-5"
                     style="font-size: 10px">Add Project</a>
-            @endif
+            @endcan
         @endauth
 
 
