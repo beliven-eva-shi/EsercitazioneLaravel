@@ -111,7 +111,29 @@
                             </form>
                         @endif
                     @endauth
+                    @auth
+                        @can('editStatus', $task)
+                            <form action="/task/{{ $task->id }}/stato" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <label for="stato">Cambia stato:</label>
+                                <select name="stato" id="stato">
 
+
+                                    <option value="Backlog" {{ $task->stato == 'Backlog' ? 'selected' : '' }}>Backlog
+                                    </option>
+                                    <option value="To do" {{ $task->stato == 'To do' ? 'selected' : '' }}>To do</option>
+                                    <option value="In progress" {{ $task->stato == 'In progress' ? 'selected' : '' }}>In
+                                        progress
+                                    </option>
+                                    <option value="Done" {{ $task->stato == 'Done' ? 'selected' : '' }}>Done
+                                    </option>
+                                </select>
+                                <button type="submit"
+                                    class="px-3 py-1 border border-black-300 rounded-full text-black-300 text-xs uppercase ml-5">Aggiorna</button>
+                            </form>
+                        @endcan
+                    @endauth
                 </div>
 
 
