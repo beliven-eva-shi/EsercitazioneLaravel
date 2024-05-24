@@ -20,11 +20,12 @@
                     <form method="POST" action="/logout">
                         @csrf
                         <button type="submit">Log Out</button>
-                    @else
-                        <a href="/login" class="ml-3 text-xs font-bold uppercase">Log In</a>
-                    @endauth
+                    </form>
+                @else
+                    <a href="/login" class="ml-3 text-xs font-bold uppercase">Log In</a>
+                @endauth
 
-                    {{-- <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                {{-- <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a> --}}
             </div>
