@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+
+    public function index()
+    {
+        return view(
+            'client.index',
+            [
+                'clients' => Client::latest()->paginate(10)->withQueryString()
+            ]
+        );
+    }
     public function create()
     {
         return view(

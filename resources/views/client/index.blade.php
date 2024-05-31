@@ -1,9 +1,7 @@
 <x-layout>
-    <x-dashboard heading="Projects">
+    <x-dashboard heading="Clients">
         <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-            <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-                <x-client-dropdown />
-            </div>
+
             @auth
                 @can('dev')
                     <a href="/task/?user={{ auth()->user()->id }}"
@@ -22,11 +20,13 @@
             @endauth
 
 
-            @if ($project->count())
-                <x-project-grid :projects="$project" />
-                {{ $project->links() }}
+            @if ($clients->count())
+                <x-client-grid :clients="$clients" />
+
+
+                {{ $clients->links() }}
             @else
-                <p class="text-center">No projects!</p>
+                <p class="text-center">No Clients!</p>
             @endif
 
         </main>

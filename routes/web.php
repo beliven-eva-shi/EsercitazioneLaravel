@@ -12,11 +12,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard', ['tasks' => Tasks::latest()->get()]);
-// });
-
-
 Route::get('task/create', [TasksController::class, 'create']);
 Route::post('task/add', [TasksController::class, 'store']);
 Route::get('task/{task:id}', [TasksController::class, 'show']);
@@ -37,3 +32,5 @@ Route::get('task', [TasksController::class, 'index']);
 Route::get('project', [ProjectsController::class, 'index']);
 Route::put('/task/{task:id}/stato', [TasksController::class, 'editStato']);
 Route::put('/task/{task:id}/user', [TasksController::class, 'editUser']);
+
+Route::get('client', [ClientsController::class, 'index']);
