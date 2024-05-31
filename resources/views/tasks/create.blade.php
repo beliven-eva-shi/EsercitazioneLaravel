@@ -38,9 +38,11 @@
                     <select name="assegnato_a" id="assegnato_a'" required>
 
                         @foreach ($users as $user)
-                            {
-                            <option value={{ $user->id }}>{{ $user->nome }}</option>
-                            }
+                            @if ($user->ruolo === 'Dev')
+                                <option value="{{ $user->id }}" {{ $task->user_id == $user->id ? 'selected' : '' }}>
+                                    {{ $user->nome }}
+                                </option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
