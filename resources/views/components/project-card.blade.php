@@ -25,8 +25,10 @@
                                 Creato il <time>{{$project->created_at->diffForHumans() }}</time>
                             </span> --}}
                             <span class="mt-2 block text-gray-400 text-xs">
-                                Cliente: {{ $project->client->name }}
+                                Client: {{ $project->client->name }}
                             </span>
+                            <span class="mt-2 block text-gray-400 text-xs">Number of tasks:
+                                {{ $project->tasks_count }}</span>
 
 
                     </div>

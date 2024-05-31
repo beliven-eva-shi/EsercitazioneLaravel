@@ -8,18 +8,27 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+
     public function index()
     {
         $clientId = request()->client;
         $client = Client::find($clientId);
+
+        $projects = Project::latest()
+            ->filter(request(['client']))
+            ->withCount('tasks')
+            ->paginate(10)
+            ->withQueryString();
+
         return view(
             'project.index',
             [
-                'project' => Project::latest()->filter(request(['client']))->paginate(10)->withQueryString(),
+                'project' => $projects,
                 'client' => $client,
             ]
         );
     }
+
 
     public function create()
     {
