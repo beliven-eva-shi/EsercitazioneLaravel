@@ -39,7 +39,7 @@
 
                         @foreach ($users as $user)
                             @if ($user->ruolo === 'Dev')
-                                <option value="{{ $user->id }}" {{ $task->user_id == $user->id ? 'selected' : '' }}>
+                                <option value="{{ $user->id }}">
                                     {{ $user->nome }}
                                 </option>
                             @endif

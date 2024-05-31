@@ -10,10 +10,13 @@ class ProjectsController extends Controller
 {
     public function index()
     {
+        $clientId = request()->client;
+        $client = Client::find($clientId);
         return view(
             'project.index',
             [
-                'project' => Project::latest()->filter(request(['client']))->paginate(10)->withQueryString()
+                'project' => Project::latest()->filter(request(['client']))->paginate(10)->withQueryString(),
+                'client' => $client,
             ]
         );
     }

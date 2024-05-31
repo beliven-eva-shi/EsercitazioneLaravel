@@ -42,10 +42,6 @@
                 @else
                     <a href="/login" class="ml-3 text-xs font-bold uppercase">Log In</a>
                 @endauth
-
-                {{-- <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                    Subscribe for Updates
-                </a> --}}
             </div>
         </nav>
         {{ $slot }}
@@ -58,7 +54,6 @@
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 4000)" x-show="show"
             class="fixed bg-blue-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
             <p>{{ session()->get('success') }}</p>
-            {{-- <p>{{session('success')}}</p> --}}
         </div>
     @endif
 </body>

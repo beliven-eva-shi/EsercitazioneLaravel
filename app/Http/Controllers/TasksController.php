@@ -12,10 +12,13 @@ class TasksController extends Controller
 {
     public function index()
     {
+        $projectId = request()->project;
+        $project = Project::where('id', $projectId)->first();
         return view(
             'tasks.index',
             [
-                'tasks' => Task::latest()->filter(request(['project', 'user']))->paginate(10)
+                'tasks' => Task::latest()->filter(request(['project', 'user']))->paginate(10),
+                'project' => $project,
             ]
         );
     }
@@ -40,7 +43,8 @@ class TasksController extends Controller
             'tasks.create',
             [
                 'users' => User::all(),
-                'projects' => Project::all()
+                'projects' => Project::all(),
+
 
             ]
 
@@ -77,7 +81,7 @@ class TasksController extends Controller
         $task->stato = $request->input('stato');
         $task->save();
 
-        return redirect("/task")->with('success', 'Task status updated!');
+        return redirect("/task/{$id}")->with('success', 'Task status updated!');
     }
 
     public function editUser(Request $request, $id)
@@ -87,6 +91,6 @@ class TasksController extends Controller
         $task->user_id = $request->input('assegnato_a');
         $task->save();
 
-        return redirect("/task")->with('success', 'Task status updated!');
+        return redirect("/task/{$id}")->with('success', 'Task status updated!');
     }
 }
